@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import spacy
 
-txt = open(os.path.join('..', 'text', 'ak_pure_complete.txt'), 'r')
+txt = open(os.path.join('..', 'text', 'ak_pure_complete.txt'), 'r', encoding='utf8')
 lines = txt.readlines()
 txt.close()
 
@@ -20,8 +20,9 @@ for line in lines:
 
 for line in lines:
     clean_lines.append(line.strip())
+# (messes up text if in first for loop)
 
-clean_lines.pop(0)    # remove artefact
+clean_lines.pop(0)  # remove artifact at beginning of text
 
 clean_lines = [i.lower() for i in clean_lines]
 
@@ -39,8 +40,8 @@ clean_lines3 = ' '.join(clean_lines2).split(' ')
 
 wc_str = (' ').join(clean_lines3)
 
-wordcloud = WordCloud(width = 2000, height = 1000).generate(wc_str)
-plt.figure(figsize=(20,12))
+wordcloud = WordCloud(width=2000, height=1000).generate(wc_str)
+plt.figure(figsize=(20, 12))
 plt.imshow(wordcloud)
 plt.axis('off')
 plt.savefig('wordcl_1.png', bbox_inches='tight')
@@ -54,10 +55,10 @@ control_text = open(os.path.join('control_text.txt'), 'w')
 control_text.write(wc_str)
 control_text.close()
 
+##########
 
-
-nlp = spacy.load('en_core_web_trf', disable=['parser', 'ner'])      # keeping only tagger component needed for
-# lemmatization
+nlp = spacy.load('en_core_web_trf', disable=['parser', 'ner'])
+# keeping only tagger component needed for lemmatization
 
 # str2 = nlp(wc_str)
 
@@ -68,7 +69,25 @@ nlp = spacy.load('en_core_web_trf', disable=['parser', 'ner'])      # keeping on
 
 nlp.max_length = 2000000
 
+# spacy.prefer_gpu()    / CUDA not working as of now
+
+#####
+
+test_str = "this is a string that shall be used to try lemmatizing text. I was tired."
+
+#####
+
 str2 = nlp(wc_str)
 
-print(wc_str)
+str3 = " ".join([token.lemma_ for token in str2])
 
+# for token in str2:
+#     print(token, token.lemma, token.lemma_)
+
+# print(str3)
+
+lem_txt = open(os.path.join('str3.txt'), 'w')
+lem_txt.write(str3)
+lem_txt.close()
+
+# print(wc_str)
