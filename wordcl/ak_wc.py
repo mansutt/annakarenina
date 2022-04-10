@@ -1,57 +1,74 @@
-import numpy as np
-import pandas as pd
 import os
-from PIL import Image
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-
 import string
-# string.punctuation
-
 import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+import spacy
 
-import re
+txt = open(os.path.join('..', 'text', 'ak_pure_complete.txt'), 'r')
+lines = txt.readlines()
+txt.close()
 
-df = open(os.path.join('..', 'text', 'ak_pure_complete.txt'), "r")
-lines = df.readlines()
-df.close()
+clean_lines = []
 
-# remove /n at the end of each line
-for index, line in enumerate(lines):
-    lines[index] = line.strip()
-
-
-
-#creating a dataframe(consider u want to convert your data to 2 columns)
-
-df_result = pd.DataFrame(columns=('first_col', 'second_col'))
-i = 0
-first_col = ""
-second_col = ""
 for line in lines:
-    # you can use "if" and "replace" in case you had some conditions to manipulate the txt data
-    if 'X' in line:
-        first_col = line.replace('X', "")
-    else:
-        # you have to kind of define what are the values in columns,for example second column includes:
-        second_col = re.sub(r' \(.*', "", line)
-        # this is how you create next line data
-        df_result.loc[i] = [first_col, second_col]
-        i = i+1
+    if line.startswith('PART'):
+        lines.remove(line)
+    elif line.startswith('Chapter'):
+        lines.remove(line)
+    elif line.startswith('\n'):
+        lines.remove(line)
+
+for line in lines:
+    clean_lines.append(line.strip())
+
+clean_lines.pop(0)    # remove artefact
+
+clean_lines = [i.lower() for i in clean_lines]
+
+clean_lines2 = []
+
+for l in clean_lines:
+    for letter in l:
+        if letter in string.punctuation:
+            l = l.replace(letter, '')
+    clean_lines2.append(l)
+
+clean_lines3 = []
+
+clean_lines3 = ' '.join(clean_lines2).split(' ')
+
+wc_str = (' ').join(clean_lines3)
+
+wordcloud = WordCloud(width = 2000, height = 1000).generate(wc_str)
+plt.figure(figsize=(20,12))
+plt.imshow(wordcloud)
+plt.axis('off')
+plt.savefig('wordcl_1.png', bbox_inches='tight')
+plt.show()
+plt.close()
+
+# problem: apostrophes separate words -> e.g. 's', 're', 't', see above
+# use stopwords.txt with stopwords parameter?
+
+control_text = open(os.path.join('control_text.txt'), 'w')
+control_text.write(wc_str)
+control_text.close()
 
 
 
+nlp = spacy.load('en_core_web_trf', disable=['parser', 'ner'])      # keeping only tagger component needed for
+# lemmatization
 
+# str2 = nlp(wc_str)
 
-# ak = pd.read_csv(os.path.join('..', 'text', 'ak_pure_complete.txt'),
-#                  index_col=0, sep=' ', header=None)
+#  -> E088] Text of length 1865574 exceeds maximum of 1000000. The parser and NER models require roughly 1GB
+# of temporary memory per 100,000 characters in the input. This means long texts may cause memory allocation errors.
+# If you're not using the parser or NER, it's probably safe to increase the `nlp.max_length` limit.
+# The limit is in number of characters, so you can check whether your inputs are too long by checking `len(text)
 
-# print(ak)
-# expanding the dispay of text sms column
-# pd.set_option('display.max_colwidth', -1)
-# print(ak.head())
+nlp.max_length = 2000000
 
-# def remove_punctuation(text):
- #    punctuationfree="".join([i for i in text if i not in string.punctuation])
- #    return punctuationfree
-# storing the puntuation free text
-# ak['punctfree']= ak['v2'].apply(lambda x:remove_punctuation(x))
+str2 = nlp(wc_str)
+
+print(wc_str)
+
