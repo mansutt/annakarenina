@@ -29,13 +29,81 @@ def preprocessing(input_text):
 
 #####
 
-with open(os.path.join('..', 'text', 'ak_p1.txt'), 'r', encoding='utf-8') as file:
+# open all text parts
+with open(os.path.join('..', 'text', 'parts', 'ak_complete.txt'), 'r', encoding='utf-8') as file:
+    ak_complete = file.readlines()
+
+with open(os.path.join('..', 'text', 'parts', 'ak_p1.txt'), 'r', encoding='utf-8') as file:
     ak_p1 = file.readlines()
 
-clean_text_p1 = preprocessing(ak_p1)
+with open(os.path.join('..', 'text', 'parts', 'ak_p2.txt'), 'r', encoding='utf-8') as file:
+    ak_p2 = file.readlines()
 
-with open(os.path.join('..', 'text', 'ak_p1_test.txt'), 'w', encoding='utf-8') as file:
+with open(os.path.join('..', 'text', 'parts', 'ak_p3.txt'), 'r', encoding='utf-8') as file:
+    ak_p3 = file.readlines()
+
+with open(os.path.join('..', 'text', 'parts', 'ak_p4.txt'), 'r', encoding='utf-8') as file:
+    ak_p4 = file.readlines()
+
+with open(os.path.join('..', 'text', 'parts', 'ak_p5.txt'), 'r', encoding='utf-8') as file:
+    ak_p5 = file.readlines()
+
+with open(os.path.join('..', 'text', 'parts', 'ak_p6.txt'), 'r', encoding='utf-8') as file:
+    ak_p6 = file.readlines()
+
+with open(os.path.join('..', 'text', 'parts', 'ak_p7.txt'), 'r', encoding='utf-8') as file:
+    ak_p7 = file.readlines()
+
+with open(os.path.join('..', 'text', 'parts', 'ak_p8.txt'), 'r', encoding='utf-8') as file:
+    ak_p8 = file.readlines()
+
+# perform preprocessing on all text parts
+clean_text_complete = preprocessing(ak_complete)
+clean_text_p1 = preprocessing(ak_p1)
+clean_text_p2 = preprocessing(ak_p2)
+clean_text_p3 = preprocessing(ak_p3)
+clean_text_p4 = preprocessing(ak_p4)
+clean_text_p5 = preprocessing(ak_p5)
+clean_text_p6 = preprocessing(ak_p6)
+clean_text_p7 = preprocessing(ak_p7)
+clean_text_p8 = preprocessing(ak_p8)
+
+# save the preprocessed texts to text files
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_complete_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_complete)
+
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p1_preprocessed.txt'), 'w', encoding='utf-8') as file:
     file.write(clean_text_p1)
 
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p2_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_p2)
 
-# iterate over dedicated folder with each part of the book
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p3_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_p3)
+    
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p4_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_p4)
+
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p5_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_p5)
+
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p6_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_p6)
+
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p7_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_p7)
+
+with open(os.path.join('..', 'text', 'preprocessed', 'ak_p8_preprocessed.txt'), 'w', encoding='utf-8') as file:
+    file.write(clean_text_p8)
+
+###
+
+# directory = os.path.join('..', 'text', 'parts')
+# for filename in os.listdir(directory):
+#     f = os.path.join(directory, filename)
+#     if os.path.isfile(f):
+#         with open(filename, 'r', encoding='utf-8') as fn:
+#             filename = filename
+#
+#
+# # iterate over dedicated folder with each part of the book
