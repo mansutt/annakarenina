@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import spacy
 
-txt = open(os.path.join('..', 'text', 'ak_complete.txt'), 'r')
+txt = open(os.path.join('..', 'text', 'preprocessed', 'ak_complete.txt'), 'r')
 lines = txt.readlines()
 txt.close()
 

@@ -38,6 +38,8 @@ with open(os.path.join('..', 'text', 'parts', 'ak_p1.txt'), 'r', encoding='utf-8
 
 with open(os.path.join('..', 'text', 'parts', 'ak_p2.txt'), 'r', encoding='utf-8') as file:
     ak_p2 = file.readlines()
+    ak_p2.pop(0)
+    ak_p2.pop(0)    # clean this up (necessary to cut out "chapter" -> why though?)
 
 with open(os.path.join('..', 'text', 'parts', 'ak_p3.txt'), 'r', encoding='utf-8') as file:
     ak_p3 = file.readlines()
@@ -47,6 +49,8 @@ with open(os.path.join('..', 'text', 'parts', 'ak_p4.txt'), 'r', encoding='utf-8
 
 with open(os.path.join('..', 'text', 'parts', 'ak_p5.txt'), 'r', encoding='utf-8') as file:
     ak_p5 = file.readlines()
+    ak_p5.pop(0)
+    ak_p5.pop(0)    # clean this up (necessary to cut out "PART" & "chapter" -> why though?)
 
 with open(os.path.join('..', 'text', 'parts', 'ak_p6.txt'), 'r', encoding='utf-8') as file:
     ak_p6 = file.readlines()
