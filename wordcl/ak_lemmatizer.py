@@ -37,16 +37,12 @@ with open(os.path.join('..', 'text', 'preprocessed', 'ak_p8_preprocessed.txt'), 
     ak_p8_non_lem = file.read()
 
 
-# define function for lemmatizing
-
 def lemmatize(part, filename):
     pre_lem_txt = nlp(part)
     lem_txt = " ".join([token.lemma_ for token in pre_lem_txt])
     with open(os.path.join('..', 'text', 'lemmatized', str(filename) + '.txt'), 'w', encoding='utf-8') as output_file:
         output_file.write(lem_txt)
 
-
-# lemmatize texts
 
 lemmatize(ak_complete_non_lem, 'ak_complete_lem')
 lemmatize(ak_p1_non_lem, 'ak_p1_lem')
@@ -57,6 +53,8 @@ lemmatize(ak_p5_non_lem, 'ak_p5_lem')
 lemmatize(ak_p6_non_lem, 'ak_p6_lem')
 lemmatize(ak_p7_non_lem, 'ak_p7_lem')
 lemmatize(ak_p8_non_lem, 'ak_p8_lem')
+
+
 
 
 # todo: another round of preprocessing to clean up text? + get rid of 's in preprocessed texts
