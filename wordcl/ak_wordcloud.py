@@ -64,29 +64,39 @@ m_wordcloud(ak_p8, 'ak_p8')
 
 # wordcloud for lemmatized text
 
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_complete_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_complete_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p1_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p1_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p2_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p2_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p3_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p3_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p4_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p4_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p5_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p5_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p6_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p6_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p7_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p7_lem = file.read()
-#
-# with open(os.path.join('..', 'text', 'preprocessed', 'ak_p8_lem.txt'), 'r', encoding='utf-8') as file:
-#     ak_p8_lem = file.read()
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_complete_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_complete_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p1_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p1_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p2_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p2_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p3_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p3_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p4_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p4_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p5_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p5_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p6_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p6_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p7_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p7_lem = file.read()
+
+with open(os.path.join('..', 'text', 'lemmatized', 'ak_p8_lem.txt'), 'r', encoding='utf-8') as file:
+    ak_p8_lem = file.read()
+
+m_wordcloud(ak_complete_lem, 'ak_complete_lem')
+m_wordcloud(ak_p1_lem, 'ak_p1_lem')
+m_wordcloud(ak_p2_lem, 'ak_p2_lem')
+m_wordcloud(ak_p3_lem, 'ak_p3_lem')
+m_wordcloud(ak_p4_lem, 'ak_p4_lem')
+m_wordcloud(ak_p5_lem, 'ak_p5_lem')
+m_wordcloud(ak_p6_lem, 'ak_p6_lem')
+m_wordcloud(ak_p7_lem, 'ak_p7_lem')
+m_wordcloud(ak_p8_lem, 'ak_p8_lem')
