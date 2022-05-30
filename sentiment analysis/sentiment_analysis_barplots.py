@@ -59,3 +59,5 @@ sent_barplot(p5_sent, 'p5_sent', 5)
 sent_barplot(p6_sent, 'p6_sent', 6)
 sent_barplot(p7_sent, 'p7_sent', 7)
 sent_barplot(p8_sent, 'p8_sent', 8)
+
+# todo: stacked barplot for each part in x-axis with emotion in y-axis

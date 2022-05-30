@@ -139,7 +139,7 @@ df = pd.DataFrame(all_parts)
 df.plot(kind='bar', stacked=True)
 
 plt.show()
-plt.savefig('main_characters_in_book_parts.png', dpi=400, bbox_inches='tight')
+plt.savefig('global_count.png', dpi=400, bbox_inches='tight')
 
 # import seaborn as sns
 #
