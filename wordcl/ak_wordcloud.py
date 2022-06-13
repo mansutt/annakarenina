@@ -37,7 +37,6 @@ with open(os.path.join('..', 'text', 'preprocessed', 'ak_p7_preprocessed.txt'), 
 with open(os.path.join('..', 'text', 'preprocessed', 'ak_p8_preprocessed.txt'), 'r', encoding='utf-8') as file:
     ak_p8 = file.read()
 
-
 # define function for wordcloud
 
 def m_wordcloud(part, filename):

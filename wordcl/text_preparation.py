@@ -179,6 +179,6 @@ with open(os.path.join('..', 'text', 'preprocessed', 'lemmatized', 'ak_p8_prp_le
 #             filename = filename
 #
 #
-# # iterate over dedicated folder with each part of the book
+# maybe: iterate over dedicated folder with each part of the book
 
 # todo: implement stopwords for 'S and other artifacts
