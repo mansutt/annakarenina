@@ -4,12 +4,6 @@ import matplotlib.pyplot as plt
 
 # wordcloud for preprocessed text
 
-# for root, dirs, files in os.walk(os.path.join('..', 'text', 'preprocessed')):
-#     for fname in files:
-#         with open(fname + '.txt', 'r', encoding='utf-8') as file:
-#             str(fname) = file.read()
-#
-
 with open(os.path.join('..', 'text', 'preprocessed', 'ak_complete_preprocessed.txt'), 'r', encoding='utf-8') as file:
     ak_complete = file.read()
 
@@ -37,10 +31,17 @@ with open(os.path.join('..', 'text', 'preprocessed', 'ak_p7_preprocessed.txt'), 
 with open(os.path.join('..', 'text', 'preprocessed', 'ak_p8_preprocessed.txt'), 'r', encoding='utf-8') as file:
     ak_p8 = file.read()
 
+
 # define function for wordcloud
 
 def m_wordcloud(part, filename):
-    wordcloud = WordCloud(width=2000, height=1000).generate(part)
+    # first: use stopwords list created in stopwords_extraction.py (todo: maybe remove this comment?)
+    with open('stopwords.txt', 'r') as f:
+        stopwords_pre = f.readlines()
+        stopwords = []
+        for e in stopwords_pre:
+            stopwords.append(e.strip())
+    wordcloud = WordCloud(width=2000, height=1000, stopwords=stopwords).generate(part)
     plt.figure(figsize=(20, 12))
     plt.imshow(wordcloud)
     plt.axis('off')

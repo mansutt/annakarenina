@@ -1,5 +1,8 @@
 import os
 import string
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 
 def preprocessing(input_text):
@@ -11,9 +14,8 @@ def preprocessing(input_text):
             input_text.remove(line)
         elif line.startswith('\n'):
             input_text.remove(line)
-    for line in input_text:
+    for line in input_text:                 # (messes up text if in first for loop)
         clean_lines.append(line.strip())
-    # (messes up text if in first for loop)
     clean_lines = [i.lower() for i in clean_lines]
     clean_lines2 = []
     for li in clean_lines:
@@ -25,6 +27,8 @@ def preprocessing(input_text):
     clean_lines3 = ' '.join(clean_lines2).split(' ')
     wc_str = ' '.join(clean_lines3)
     return wc_str
+
+# todo: change name of wc_str (only preprocessing, not directly related to wordcloud)
 
 
 #####
@@ -39,7 +43,7 @@ with open(os.path.join('..', 'text', 'parts', 'ak_p1.txt'), 'r', encoding='utf-8
 with open(os.path.join('..', 'text', 'parts', 'ak_p2.txt'), 'r', encoding='utf-8') as file:
     ak_p2 = file.readlines()
     ak_p2.pop(0)
-    ak_p2.pop(0)  # clean this up (necessary to cut out "chapter" -> why though?)
+    ak_p2.pop(0)  # todo: clean this up (necessary to cut out "chapter" -> why though?)
 
 with open(os.path.join('..', 'text', 'parts', 'ak_p3.txt'), 'r', encoding='utf-8') as file:
     ak_p3 = file.readlines()
